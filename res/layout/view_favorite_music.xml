@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+    <RelativeLayout
+            android:id="@+id/scrollLayout"
+            android:layout_width="fill_parent"
+            android:layout_height="55dp"
+            android:background="@drawable/barbg"
+            android:orientation="horizontal">
+        <TextView
+                android:layout_height="fill_parent"
+                android:layout_width="fill_parent"
+                android:text="我的最爱"
+                android:gravity="center"
+                android:textSize="20sp"
+                android:textColor="@color/white"/>
+        <ImageButton
+                android:id="@+id/localMusic"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:background="@drawable/selected_button_list"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="15dp"/>
+        <ImageButton
+                android:id="@+id/cutMusic"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/right_button"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="15dp"/>
+    </RelativeLayout>
+    <ListView android:id="@+id/favorite_listView"
+              android:layout_width="fill_parent"
+              android:layout_height="wrap_content"
+              android:scrollbars="none"/>
+</LinearLayout>
