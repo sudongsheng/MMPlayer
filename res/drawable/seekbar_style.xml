@@ -3,20 +3,20 @@
     <!-- 背景图 -->
     <item
             android:id="@+id/background"
-          android:drawable="@drawable/seekbar_bg"
-          android:paddingBottom="3dip"/>
+            android:drawable="@drawable/seekbar_bg"
+            android:paddingBottom="3dip"/>
     <!--全部能量图  -->
     <item
             android:id="@+id/SecondaryProgress"
-          android:drawable="@drawable/seekbar_bg"
-          android:paddingBottom="3dip"/>
+            android:drawable="@drawable/seekbar_bg"
+            android:paddingBottom="3dip"/>
     <!-- 进和能量图 -->
     <item
             android:id="@android:id/progress"
-          android:paddingBottom="3dip">
+            android:paddingBottom="3dip">
         <clip>
             <shape>
-                <corners android:radius="5dip" />
+                <corners android:radius="5dip"/>
                 <gradient
                         android:startColor="@color/white"
                         android:centerColor="@color/white"

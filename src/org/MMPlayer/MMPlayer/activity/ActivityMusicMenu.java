@@ -12,6 +12,7 @@ import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.*;
 import android.widget.*;
+import com.umeng.analytics.MobclickAgent;
 import org.MMPlayer.MMPlayer.R;
 import org.MMPlayer.MMPlayer.model.Mp3Info;
 import org.MMPlayer.MMPlayer.notification.SetVoice;
@@ -85,6 +86,7 @@ public class ActivityMusicMenu extends Activity implements RadioGroup.OnCheckedC
             localAdapter = new MyAdapter(this, mp3Infos_all);
             listView_local.setAdapter(localAdapter);
         }
+
         view_favorite = getLayoutInflater().inflate(R.layout.view_favorite_music, null);
         localMusic = (ImageButton) view_favorite.findViewById(R.id.localMusic);
         cutMusic = (ImageButton) view_favorite.findViewById(R.id.cutMusic);
@@ -112,6 +114,7 @@ public class ActivityMusicMenu extends Activity implements RadioGroup.OnCheckedC
         listView_cut = (ListView) view_cut.findViewById(R.id.cut_listView);
         cutAdapter = new MyAdapter(this, mp3Infos_cut);
         listView_cut.setAdapter(cutAdapter);
+
         setFooterView();
         receiver = new Receiver();
         IntentFilter filter = new IntentFilter();
@@ -128,7 +131,7 @@ public class ActivityMusicMenu extends Activity implements RadioGroup.OnCheckedC
             try {
                 songName.setText(mp3Infos_all.get(0).getMp3Name());
             } catch (Exception e) {
-                songName.setText("找不到音乐");
+                songName.setText("请检查是否插入sdcard");
             }
         } else {
             songName.setText(name);
@@ -351,10 +354,7 @@ public class ActivityMusicMenu extends Activity implements RadioGroup.OnCheckedC
                         ActivityMusicMenu.this.getContentResolver().delete(
                                 MediaStore.Audio.Media.EXTERNAL_CONTENT_URI,
                                 MediaStore.Audio.Media._ID + "=" + mp3Infos.get(position).getId(), null);
-                        if (flag == AppConstant.CUT_MUSIC) {
-                            mp3Infos.remove(position);
-                            cutAdapter.notifyDataSetChanged();
-                        }
+                        ActivityMusicMenu.this.recreate();
                         break;
                     default:
                         break;
@@ -474,5 +474,13 @@ public class ActivityMusicMenu extends Activity implements RadioGroup.OnCheckedC
             startActivity(i);
         }
         return super.onKeyUp(keyCode, event);
+    }
+    public void onResume() {
+        super.onResume();
+        MobclickAgent.onResume(this);
+    }
+    public void onPause() {
+        super.onPause();
+        MobclickAgent.onPause(this);
     }
 }

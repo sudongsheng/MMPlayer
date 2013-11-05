@@ -16,6 +16,7 @@ import android.widget.ImageButton;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
+import com.umeng.analytics.MobclickAgent;
 import org.MMPlayer.MMPlayer.R;
 import org.MMPlayer.MMPlayer.cut.ID3V1;
 import org.MMPlayer.MMPlayer.cut.ID3V2;
@@ -278,10 +279,10 @@ public class ActivityPlaying extends Activity {
                 editor.commit();
             }
         });
-        listButton.setOnClickListener(new View.OnClickListener() {
+        musicName.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                /*String items[] = new String[mp3Infos.size()];
+                String items[] = new String[mp3Infos.size()];
                 for (int i = 0; i < mp3Infos.size(); i++)
                     items[i] = mp3Infos.get(i).getMp3Name();
                 new AlertDialog.Builder(ActivityPlaying.this)
@@ -295,10 +296,17 @@ public class ActivityPlaying extends Activity {
                                 position = which;
                                 setDynamicView();
                                 playService(AppConstant.MEDIA_PLAY);
+                                updateTimeCallback = new UpdateTimeCallback(0);
+                                begin = System.currentTimeMillis();
+                                handler.post(updateTimeCallback);
                             }
-                        }).show(); */
-                handler.removeCallbacks(updateTimeCallback);
-                Intent intent=new Intent(ActivityPlaying.this,ActivityMusicMenu.class);
+                        }).show();
+            }
+        });
+        listButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ActivityPlaying.this, ActivityMusicMenu.class);
                 intent.putExtra("mp3Info", mp3Infos.get(position).getMp3Name());
                 startActivity(intent);
             }
@@ -543,11 +551,18 @@ public class ActivityPlaying extends Activity {
     @Override
     public boolean onKeyUp(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK) {
-            handler.removeCallbacks(updateTimeCallback);
             Intent intent = new Intent(ActivityPlaying.this, ActivityMusicMenu.class);
             intent.putExtra("mp3Info", mp3Infos.get(position).getMp3Name());
             startActivity(intent);
         }
         return false;
+    }
+    public void onResume() {
+        super.onResume();
+        MobclickAgent.onResume(this);
+    }
+    public void onPause() {
+        super.onPause();
+        MobclickAgent.onPause(this);
     }
 }

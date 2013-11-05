@@ -8,16 +8,18 @@ import java.io.IOException;
 import java.io.RandomAccessFile;
 
 public class ID3V1 {
-    
+
     private String title;
-    private String artist="<UnKnown>";
-    private String album="<UnKnown>";
-    private String year="<UnKnown>";
+    private String artist = "<UnKnown>";
+    private String album = "<UnKnown>";
+    private String year = "<UnKnown>";
     private File file;
+
     public ID3V1(File file) {
         this.file = file;
     }
-    public void initialize(){
+
+    public void initialize() {
         try {
             //可以随机访问文件的任意部分
             RandomAccessFile raf = new RandomAccessFile(file, "r");
@@ -27,7 +29,7 @@ public class ID3V1 {
             //读取Header
             raf.read(tag);
             if (!new String(tag).equals("TAG")) {
-                Log.i("TAG","No ID3V1 found");
+                Log.i("TAG", "No ID3V1 found");
             }
             byte[] tags = new byte[125];
             raf.read(tags);
@@ -39,27 +41,29 @@ public class ID3V1 {
             e.printStackTrace();
         }
     }
+
     private void readTag(byte[] array) {
         title = new String(array, 0, 30).trim();
         artist = new String(array, 30, 30).trim();
         album = new String(array, 60, 30).trim();
         year = new String(array, 90, 4);
-        if(artist==null){
-            artist="<UnKnown>";
+        if (artist == null) {
+            artist = "<UnKnown>";
         }
-        if(album==null){
-            album="<UnKnown>";
+        if (album == null) {
+            album = "<UnKnown>";
         }
-        if(year==null){
-            year="<UnKnown>";
+        if (year == null) {
+            year = "<UnKnown>";
         }
     }
-    public String toString(){
+
+    public String toString() {
         StringBuffer buffer = new StringBuffer();
-        buffer.append("标题:"+title+"\n");
-        buffer.append("歌手:"+artist+"\n");
-        buffer.append("专辑:"+album+"\n");
-        buffer.append("年代:"+year+"\n");
+        buffer.append("标题:" + title + "\n");
+        buffer.append("歌手:" + artist + "\n");
+        buffer.append("专辑:" + album + "\n");
+        buffer.append("年代:" + year + "\n");
         return buffer.toString();
     }
 }

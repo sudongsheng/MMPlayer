@@ -21,36 +21,41 @@ public class ID3V2 {
 
     public void initialize() throws Exception {
         if (file == null)
-            Log.i("TAG","MP3 file is not found");
+            Log.i("TAG", "MP3 file is not found");
         FileInputStream is = new FileInputStream(file);
         byte[] header = new byte[10];
         is.read(header);
         //判断是否是合法的ID3V2头
         if (header[0] != 'I' || header[1] != 'D' || header[2] != '3') {
             Log.i("TAG", "not invalid mp3 ID3 tag");
-        }
-        //计算ID3V2的帧大小
-        tagSize = (header[9] & 0xff) + ((header[8] & 0xff) << 7)
-                + ((header[7] & 0xff) << 14) + ((header[6] & 0xff) << 21);
-        int pos = 10;
-        while (pos < tagSize) {
-            byte[] tag = new byte[10];
-            //读取ID3V2的帧头，如果tag[0]=0，则跳出循环，结束解析ID3V2
-            is.read(tag);
-            if (tag[0] == 0) {
-                break;
+        } else {
+            //计算ID3V2的帧大小
+            tagSize = (header[9] & 0xff) + ((header[8] & 0xff) << 7)
+                    + ((header[7] & 0xff) << 14) + ((header[6] & 0xff) << 21);
+            int pos = 10;
+            while (pos < tagSize) {
+                byte[] tag = new byte[10];
+                //读取ID3V2的帧头，如果tag[0]=0，则跳出循环，结束解析ID3V2
+                is.read(tag);
+                if (tag[0] == 0) {
+                    break;
+                }
+                String tagName = new StringBuffer().append((char) tag[0]).append(
+                        (char) tag[1]).append((char) tag[2]).append((char) tag[3])
+                        .toString();
+                //计算ID3V2帧的大小，不包括前面的帧头大小
+                int length = ((tag[4] & 0xff) << 24) + ((tag[5] & 0xff) << 16)
+                        + ((tag[6] & 0xff) << 8) + tag[7];
+                Log.i("TAG", length + "length");
+                try {
+                    byte[] data = new byte[length];
+                    is.read(data);
+                    //将帧头和帧体存储在HashMap中
+                    tags.put(tagName, data);
+                } catch (OutOfMemoryError error) {
+                }
+                pos = pos + length + 10;
             }
-            String tagName = new StringBuffer().append((char) tag[0]).append(
-                    (char) tag[1]).append((char) tag[2]).append((char) tag[3])
-                    .toString();
-            //计算ID3V2帧的大小，不包括前面的帧头大小
-            int length = ((tag[4] & 0xff) << 24) + ((tag[5] & 0xff) << 16)
-                    + ((tag[6] & 0xff) << 8) + tag[7];
-            byte[] data = new byte[length];
-            is.read(data);
-            //将帧头和帧体存储在HashMap中
-            tags.put(tagName, data);
-            pos = pos + length + 10;
         }
         is.close();
     }

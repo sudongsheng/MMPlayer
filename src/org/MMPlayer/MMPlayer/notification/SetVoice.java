@@ -20,7 +20,7 @@ public class SetVoice {
         Uri uri = MediaStore.Audio.Media.getContentUriForPath(sdfile
                 .getAbsolutePath());
         Cursor cursor = context.getContentResolver().query(uri, null,
-                MediaStore.MediaColumns.DATA + "=?", new String[] { path },
+                MediaStore.MediaColumns.DATA + "=?", new String[]{path},
                 null);
         if (cursor.moveToFirst() && cursor.getCount() > 0) {
             String _id = cursor.getString(0);
@@ -29,7 +29,7 @@ public class SetVoice {
             values.put(MediaStore.Audio.Media.IS_ALARM, false);
             values.put(MediaStore.Audio.Media.IS_MUSIC, false);
             context.getContentResolver().update(uri, values,
-                    MediaStore.MediaColumns.DATA + "=?", new String[] { path });
+                    MediaStore.MediaColumns.DATA + "=?", new String[]{path});
             Uri newUri = ContentUris.withAppendedId(uri, Long.valueOf(_id));
             RingtoneManager.setActualDefaultRingtoneUri(context,
                     RingtoneManager.TYPE_RINGTONE, newUri);
@@ -45,7 +45,7 @@ public class SetVoice {
         Uri uri = MediaStore.Audio.Media.getContentUriForPath(sdfile
                 .getAbsolutePath());
         Cursor cursor = context.getContentResolver().query(uri, null,
-                MediaStore.MediaColumns.DATA + "=?", new String[] { path },
+                MediaStore.MediaColumns.DATA + "=?", new String[]{path},
                 null);
         if (cursor.moveToFirst() && cursor.getCount() > 0) {
             String _id = cursor.getString(0);
@@ -55,7 +55,7 @@ public class SetVoice {
             values.put(MediaStore.Audio.Media.IS_MUSIC, false);
 
             context.getContentResolver().update(uri, values,
-                    MediaStore.MediaColumns.DATA + "=?", new String[] { path });
+                    MediaStore.MediaColumns.DATA + "=?", new String[]{path});
             Uri newUri = ContentUris.withAppendedId(uri, Long.valueOf(_id));
             RingtoneManager.setActualDefaultRingtoneUri(context,
                     RingtoneManager.TYPE_NOTIFICATION, newUri);
@@ -70,7 +70,7 @@ public class SetVoice {
         Uri uri = MediaStore.Audio.Media.getContentUriForPath(sdfile
                 .getAbsolutePath());
         Cursor cursor = context.getContentResolver().query(uri, null,
-                MediaStore.MediaColumns.DATA + "=?", new String[] { path },
+                MediaStore.MediaColumns.DATA + "=?", new String[]{path},
                 null);
         if (cursor.moveToFirst() && cursor.getCount() > 0) {
             String _id = cursor.getString(0);
@@ -79,7 +79,7 @@ public class SetVoice {
             values.put(MediaStore.Audio.Media.IS_ALARM, true);
             values.put(MediaStore.Audio.Media.IS_MUSIC, false);
             context.getContentResolver().update(uri, values,
-                    MediaStore.MediaColumns.DATA + "=?", new String[] { path });
+                    MediaStore.MediaColumns.DATA + "=?", new String[]{path});
             Uri newUri = ContentUris.withAppendedId(uri, Long.valueOf(_id));
             RingtoneManager.setActualDefaultRingtoneUri(context,
                     RingtoneManager.TYPE_ALARM, newUri);

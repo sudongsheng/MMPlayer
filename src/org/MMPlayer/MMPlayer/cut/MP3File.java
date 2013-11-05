@@ -42,7 +42,7 @@ public class MP3File {
             id3v2.initialize();
             // 创建Frames对象
             frames = new Frames(this);
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
@@ -75,7 +75,7 @@ public class MP3File {
         new File(Environment.getExternalStorageDirectory().getAbsolutePath() + "/MM播放器/音乐剪切/").mkdirs();
         String path = file.getPath();
         fileName = Environment.getExternalStorageDirectory().getAbsolutePath()
-                + "/MM播放器/音乐剪切/" +songName+" - 剪切 - "+((int)end-(int)start)+".mp3";
+                + "/MM播放器/音乐剪切/" + songName + " - 剪切 - " + ((int) end - (int) start) + ".mp3";
         //Log.i("TAG",fileName);
         FileInputStream fis = new FileInputStream(new File(path));
         // 新文件的输出流

@@ -26,7 +26,7 @@ public class ActivityWelcome extends Activity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent intent = new Intent(ActivityWelcome.this,ActivityMusicMenu.class);  //从启动动画ui跳转到主ui
+                Intent intent = new Intent(ActivityWelcome.this, ActivityMusicMenu.class);  //从启动动画ui跳转到主ui
                 startActivity(intent);
                 ActivityWelcome.this.finish();    // 结束启动动画界面
             }

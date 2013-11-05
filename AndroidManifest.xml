@@ -8,16 +8,18 @@
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"></uses-permission>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"></uses-permission>
 
     <application android:label="@string/app_name" android:icon="@drawable/application_icon"
                  android:theme="@android:style/Theme.Holo.NoActionBar">
         <activity android:name=".activity.ActivityWelcome"
-                            android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN"/>
-            <category android:name="android.intent.category.LAUNCHER"/>
-        </intent-filter>
+                  android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
         </activity>
         <activity android:name=".activity.ActivityMusicMenu"
                   android:screenOrientation="portrait"/>
@@ -25,5 +27,8 @@
         <activity android:name=".activity.ActivityPlaying"
                   android:screenOrientation="portrait"/>
         <service android:name=".service.ServicePlaying"/>
+        <meta-data android:value="5278b97a56240bf57e0258a0" android:name="UMENG_APPKEY"></meta-data>
+        <meta-data android:value="Developer" android:name="UMENG_CHANNEL"/>
     </application>
+
 </manifest>

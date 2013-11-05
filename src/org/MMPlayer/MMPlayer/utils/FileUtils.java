@@ -81,11 +81,11 @@ public class FileUtils {
                 for (int i = 0; i < fileArray.length; i++) {
                     if (fileArray[i].toString().endsWith(".mp3")) {
                         Mp3Info cutMp3Info = new Mp3Info();
-                        cutMp3Info.setId(Integer.parseInt(fileArray[i].toString().substring(fileArray[i].toString().indexOf("- 剪切 - ") + 7, fileArray[i].toString().indexOf(".mp3"))));
+                        cutMp3Info.setId(Integer.parseInt(fileArray[i].toString().substring(fileArray[i].toString().lastIndexOf("- 剪切 - ") + 7, fileArray[i].toString().lastIndexOf(".mp3"))));
                         cutMp3Info.setMp3Name(fileArray[i].toString().substring(fileArray[i].toString().indexOf("音乐剪切/") + 5, fileArray[i].toString().indexOf(".mp3")));
                         cutMp3Info.setMp3Path(fileArray[i].toString());
                         try {
-                            cutMp3Info.setMp3Duration(Long.parseLong(fileArray[i].toString().substring(fileArray[i].toString().indexOf("- 剪切 - ") + 7, fileArray[i].toString().indexOf(".mp3"))));
+                            cutMp3Info.setMp3Duration(Long.parseLong(fileArray[i].toString().substring(fileArray[i].toString().lastIndexOf("- 剪切 - ") + 7, fileArray[i].toString().lastIndexOf(".mp3"))));
                         } catch (Exception e) {
                             cutMp3Info.setMp3Duration(Long.parseLong("1000000"));
                         }

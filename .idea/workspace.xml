@@ -35,7 +35,8 @@
     </option>
   </component>
   <component name="AndroidLogFilters">
-    <option name="TOOL_WINDOW_LOG_LEVEL" value="ERROR" />
+    <option name="TOOL_WINDOW_LOG_LEVEL" value="INFO" />
+    <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="TAG" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ea98afe4-faa4-4f8d-a987-9b05619b18d0" name="Default" comment="" />
@@ -44,7 +45,7 @@
     <file path="/main.xml" changelist="ea98afe4-faa4-4f8d-a987-9b05619b18d0" time="1379428140967" ignored="false" />
     <file path="/activityMusicMenu.java" changelist="ea98afe4-faa4-4f8d-a987-9b05619b18d0" time="1379439356075" ignored="false" />
     <file path="/view_localMusic.xml" changelist="ea98afe4-faa4-4f8d-a987-9b05619b18d0" time="1379426168612" ignored="false" />
-    <file path="/AndroidManifest.xml" changelist="ea98afe4-faa4-4f8d-a987-9b05619b18d0" time="1381231478076" ignored="false" />
+    <file path="/AndroidManifest.xml" changelist="ea98afe4-faa4-4f8d-a987-9b05619b18d0" time="1383644688433" ignored="false" />
     <file path="/fragment.java" changelist="ea98afe4-faa4-4f8d-a987-9b05619b18d0" time="1381223913188" ignored="false" />
     <file path="/strings.xml" changelist="ea98afe4-faa4-4f8d-a987-9b05619b18d0" time="1380903306938" ignored="false" />
     <file path="/textcolor_radiobutton.xml" changelist="ea98afe4-faa4-4f8d-a987-9b05619b18d0" time="1380728840273" ignored="false" />
@@ -52,9 +53,9 @@
     <file path="D:/Eclipse/workspace/MP3Player/src/com/application/mp3player/LocalMp3ListActivity.java" changelist="ea98afe4-faa4-4f8d-a987-9b05619b18d0" time="1379430594315" ignored="false" />
     <file path="/view_listadapter.xml" changelist="ea98afe4-faa4-4f8d-a987-9b05619b18d0" time="1381069414400" ignored="false" />
     <file path="/selected_button_favorite.xml" changelist="ea98afe4-faa4-4f8d-a987-9b05619b18d0" time="1379431544839" ignored="false" />
-    <file path="/FileUtils.java" changelist="ea98afe4-faa4-4f8d-a987-9b05619b18d0" time="1381221816665" ignored="false" />
+    <file path="/FileUtils.java" changelist="ea98afe4-faa4-4f8d-a987-9b05619b18d0" time="1381892658708" ignored="false" />
     <file path="/view_favorite_music.xml" changelist="ea98afe4-faa4-4f8d-a987-9b05619b18d0" time="1381219300871" ignored="false" />
-    <file path="/ActivityPlaying.java" changelist="ea98afe4-faa4-4f8d-a987-9b05619b18d0" time="1381220135235" ignored="false" />
+    <file path="/ActivityPlaying.java" changelist="ea98afe4-faa4-4f8d-a987-9b05619b18d0" time="1381894365184" ignored="false" />
     <file path="/activity_playing.xml" changelist="ea98afe4-faa4-4f8d-a987-9b05619b18d0" time="1381219697670" ignored="false" />
     <file path="/AppConstant.java" changelist="ea98afe4-faa4-4f8d-a987-9b05619b18d0" time="1381210170100" ignored="false" />
     <file path="/ServicePlaying.java" changelist="ea98afe4-faa4-4f8d-a987-9b05619b18d0" time="1381224585595" ignored="false" />
@@ -65,9 +66,9 @@
     <file path="D:/Eclipse/workspace/MP3Player/src/com/application/service/PlayerService.java" changelist="ea98afe4-faa4-4f8d-a987-9b05619b18d0" time="1379517890967" ignored="false" />
     <file path="F:/nupter/res/layout/activity_searchbook.xml" changelist="ea98afe4-faa4-4f8d-a987-9b05619b18d0" time="1379442055821" ignored="false" />
     <file path="F:/nupter/res/layout/item_collection_book.xml" changelist="ea98afe4-faa4-4f8d-a987-9b05619b18d0" time="1379442245464" ignored="false" />
-    <file path="/ActivityMusicMenu.java" changelist="ea98afe4-faa4-4f8d-a987-9b05619b18d0" time="1381231031089" ignored="false" />
+    <file path="/ActivityMusicMenu.java" changelist="ea98afe4-faa4-4f8d-a987-9b05619b18d0" time="1381898683826" ignored="false" />
     <file path="D:/Eclipse/workspace/MP3Player/src/com/application/mp3player/PlayerActivity.java" changelist="ea98afe4-faa4-4f8d-a987-9b05619b18d0" time="1379531717975" ignored="false" />
-    <file path="/Dummy.txt" changelist="ea98afe4-faa4-4f8d-a987-9b05619b18d0" time="1381231673352" ignored="false" />
+    <file path="/Dummy.txt" changelist="ea98afe4-faa4-4f8d-a987-9b05619b18d0" time="1383644424081" ignored="false" />
     <file path="/activity_music_menu.xml" changelist="ea98afe4-faa4-4f8d-a987-9b05619b18d0" time="1381219844568" ignored="false" />
     <file path="/selected_button_list.xml" changelist="ea98afe4-faa4-4f8d-a987-9b05619b18d0" time="1380908475374" ignored="false" />
     <file path="F:/nupter/src/org/nupter/nupter/activity/LoginSchoolcardActivity.java" changelist="ea98afe4-faa4-4f8d-a987-9b05619b18d0" time="1379585895162" ignored="false" />
@@ -92,9 +93,26 @@
     <file path="/colors.xml" changelist="ea98afe4-faa4-4f8d-a987-9b05619b18d0" time="1381070969857" ignored="false" />
     <file path="/ID3V1.java" changelist="ea98afe4-faa4-4f8d-a987-9b05619b18d0" time="1381177013574" ignored="false" />
     <file path="/MP3File.java" changelist="ea98afe4-faa4-4f8d-a987-9b05619b18d0" time="1381217306691" ignored="false" />
-    <file path="$PROJECT_DIR$/gen/org/MMPlayer/MMPlayer/R.java" changelist="ea98afe4-faa4-4f8d-a987-9b05619b18d0" time="1381212099941" ignored="false" />
+    <file path="$PROJECT_DIR$/gen/org/MMPlayer/MMPlayer/R.java" changelist="ea98afe4-faa4-4f8d-a987-9b05619b18d0" time="1383644698082" ignored="false" />
     <file path="/view_cut_music.xml" changelist="ea98afe4-faa4-4f8d-a987-9b05619b18d0" time="1381219568438" ignored="false" />
     <file path="$USER_HOME$/Desktop/MMPlayer/res/layout/view_favorite_music.xml" changelist="ea98afe4-faa4-4f8d-a987-9b05619b18d0" time="1381219302116" ignored="false" />
+    <file path="/ID3V2.java" changelist="ea98afe4-faa4-4f8d-a987-9b05619b18d0" time="1381895713052" ignored="false" />
+    <file path="$APPLICATION_HOME_DIR$/plugins/android/lib/android.jar!/org/jetbrains/android/android.xsd" changelist="ea98afe4-faa4-4f8d-a987-9b05619b18d0" time="1383644234210" ignored="false" />
+    <file path="$PROJECT_DIR$/res/drawable/selected_button_itemmenu.xml" changelist="ea98afe4-faa4-4f8d-a987-9b05619b18d0" time="1383644374570" ignored="false" />
+    <file path="$PROJECT_DIR$/res/drawable/right_button.xml" changelist="ea98afe4-faa4-4f8d-a987-9b05619b18d0" time="1383644374570" ignored="false" />
+    <file path="$PROJECT_DIR$/res/drawable/seekbar_style.xml" changelist="ea98afe4-faa4-4f8d-a987-9b05619b18d0" time="1383644374570" ignored="false" />
+    <file path="$PROJECT_DIR$/res/drawable/thumb.xml" changelist="ea98afe4-faa4-4f8d-a987-9b05619b18d0" time="1383644374570" ignored="false" />
+    <file path="$PROJECT_DIR$/src/org/MMPlayer/MMPlayer/model/Mp3Info.java" changelist="ea98afe4-faa4-4f8d-a987-9b05619b18d0" time="1383644374570" ignored="false" />
+    <file path="$PROJECT_DIR$/res/drawable/selected_button_next.xml" changelist="ea98afe4-faa4-4f8d-a987-9b05619b18d0" time="1383644374570" ignored="false" />
+    <file path="$PROJECT_DIR$/src/org/MMPlayer/MMPlayer/notification/SetVoice.java" changelist="ea98afe4-faa4-4f8d-a987-9b05619b18d0" time="1383644374570" ignored="false" />
+    <file path="$PROJECT_DIR$/res/drawable/textcolor_radiobutton.xml" changelist="ea98afe4-faa4-4f8d-a987-9b05619b18d0" time="1383644374570" ignored="false" />
+    <file path="$PROJECT_DIR$/res/drawable/selected_button_before.xml" changelist="ea98afe4-faa4-4f8d-a987-9b05619b18d0" time="1383644374570" ignored="false" />
+    <file path="$PROJECT_DIR$/res/drawable/selected_button_list.xml" changelist="ea98afe4-faa4-4f8d-a987-9b05619b18d0" time="1383644374570" ignored="false" />
+    <file path="$PROJECT_DIR$/res/drawable/selected_text_item.xml" changelist="ea98afe4-faa4-4f8d-a987-9b05619b18d0" time="1383644374570" ignored="false" />
+    <file path="$PROJECT_DIR$/res/drawable/selected_view_item.xml" changelist="ea98afe4-faa4-4f8d-a987-9b05619b18d0" time="1383644374570" ignored="false" />
+    <file path="$PROJECT_DIR$/res/drawable/favoritebt.xml" changelist="ea98afe4-faa4-4f8d-a987-9b05619b18d0" time="1383644374570" ignored="false" />
+    <file path="$PROJECT_DIR$/res/drawable/selected_button_cut.xml" changelist="ea98afe4-faa4-4f8d-a987-9b05619b18d0" time="1383644374570" ignored="false" />
+    <file path="$PROJECT_DIR$/../nupter/gen/org/nupter/nupter/R.java" changelist="ea98afe4-faa4-4f8d-a987-9b05619b18d0" time="1383644434343" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -114,6 +132,7 @@
     <disable_hints />
   </component>
   <component name="DebuggerManager">
+    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_any default_suspend_policy="SuspendAll" default_condition_enabled="true">
       <breakpoint>
         <option name="NOTIFY_CAUGHT" value="true" />
@@ -150,7 +169,6 @@
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
     </breakpoint_any>
-    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_rules />
     <ui_properties />
   </component>
@@ -160,19 +178,28 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="ActivityMusicMenu.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="ActivityMusicMenu.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/org/MMPlayer/MMPlayer/activity/ActivityMusicMenu.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="52" column="11" selection-start="1971" selection-end="1971" vertical-scroll-proportion="0.2754821">
+            <state line="29" column="39" selection-start="961" selection-end="995" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ActivityPlaying.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="ActivityPlaying.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/org/MMPlayer/MMPlayer/activity/ActivityPlaying.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="356" column="48" selection-start="14399" selection-end="14399" vertical-scroll-proportion="0.0">
+            <state line="558" column="33" selection-start="24619" selection-end="24619" vertical-scroll-proportion="0.47875354">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AndroidManifest.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="32" column="29" selection-start="1724" selection-end="1724" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -188,22 +215,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/res/layout/view_listadapter.xml" />
         <option value="$PROJECT_DIR$/res/values/colors.xml" />
         <option value="$PROJECT_DIR$/src/org/MMPlayer/MMPlayer/cut/ID3V1.java" />
         <option value="$PROJECT_DIR$/src/org/MMPlayer/MMPlayer/cut/Frames.java" />
-        <option value="$PROJECT_DIR$/src/org/MMPlayer/MMPlayer/cut/ID3V2.java" />
         <option value="$PROJECT_DIR$/src/org/MMPlayer/MMPlayer/utils/AppConstant.java" />
-        <option value="$PROJECT_DIR$/src/org/MMPlayer/MMPlayer/cut/MP3File.java" />
         <option value="$PROJECT_DIR$/res/layout/view_favorite_music.xml" />
         <option value="$PROJECT_DIR$/res/layout/view_cut_music.xml" />
         <option value="$PROJECT_DIR$/res/layout/activity_playing.xml" />
         <option value="$PROJECT_DIR$/res/layout/activity_music_menu.xml" />
-        <option value="$PROJECT_DIR$/src/org/MMPlayer/MMPlayer/activity/ActivityPlaying.java" />
-        <option value="$PROJECT_DIR$/src/org/MMPlayer/MMPlayer/utils/FileUtils.java" />
         <option value="$PROJECT_DIR$/res/layout/view_local_music.xml" />
         <option value="$PROJECT_DIR$/src/org/MMPlayer/MMPlayer/service/ServicePlaying.java" />
+        <option value="$PROJECT_DIR$/src/org/MMPlayer/MMPlayer/utils/FileUtils.java" />
+        <option value="$PROJECT_DIR$/src/org/MMPlayer/MMPlayer/cut/MP3File.java" />
+        <option value="$PROJECT_DIR$/src/org/MMPlayer/MMPlayer/cut/ID3V2.java" />
+        <option value="$PROJECT_DIR$/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/src/org/MMPlayer/MMPlayer/activity/ActivityMusicMenu.java" />
+        <option value="$PROJECT_DIR$/src/org/MMPlayer/MMPlayer/activity/ActivityPlaying.java" />
       </list>
     </option>
   </component>
@@ -212,9 +239,8 @@
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
-    <option name="y" value="-8" />
-    <option name="width" value="1382" />
-    <option name="height" value="744" />
+    <option name="width" value="1378" />
+    <option name="height" value="728" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -242,6 +268,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
@@ -278,6 +305,10 @@
               <option name="myItemId" value="MMPlayer" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="utils" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -298,6 +329,46 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="service" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MMPlayer" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MMPlayer" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MMPlayer" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MMPlayer" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MMPlayer" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MMPlayer" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cut" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -355,9 +426,22 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MMPlayer" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MMPlayer" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="libs" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -365,9 +449,11 @@
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="OverrideImplement.combined" value="true" />
     <property name="project.structure.proportion" value="0.15" />
+    <property name="options.splitter.main.proportions" value="0.3" />
+    <property name="options.lastSelected" value="preferences.updates" />
     <property name="recentsLimit" value="5" />
     <property name="MemberChooser.sorted" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../nupter" />
     <property name="AndroidLayoutSelectedEditor" value="text-editor" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="MemberChooser.copyJavadoc" value="false" />
@@ -377,6 +463,8 @@
     <property name="FullScreen" value="false" />
     <property name="MemberChooser.showClasses" value="true" />
     <property name="GoToClass.includeLibraries" value="false" />
+    <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
@@ -544,6 +632,23 @@
     </configuration>
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
+  <component name="SvnConfiguration" maxAnnotateRevisions="500" myUseAcceleration="nothing" myAutoUpdateAfterCommit="false" cleanupOnStartRun="false" SSL_PROTOCOLS="all">
+    <option name="USER" value="" />
+    <option name="PASSWORD" value="" />
+    <option name="mySSHConnectionTimeout" value="30000" />
+    <option name="mySSHReadTimeout" value="30000" />
+    <option name="LAST_MERGED_REVISION" />
+    <option name="MERGE_DRY_RUN" value="false" />
+    <option name="MERGE_DIFF_USE_ANCESTRY" value="true" />
+    <option name="UPDATE_LOCK_ON_DEMAND" value="false" />
+    <option name="IGNORE_SPACES_IN_MERGE" value="false" />
+    <option name="CHECK_NESTED_FOR_QUICK_MERGE" value="false" />
+    <option name="IGNORE_SPACES_IN_ANNOTATE" value="true" />
+    <option name="SHOW_MERGE_SOURCES_IN_ANNOTATE" value="true" />
+    <option name="FORCE_UPDATE" value="false" />
+    <option name="IGNORE_EXTERNALS" value="false" />
+    <myIsUseDefaultProxy>false</myIsUseDefaultProxy>
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="ea98afe4-faa4-4f8d-a987-9b05619b18d0" name="Default" comment="" />
@@ -573,25 +678,25 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="1" />
-    <editor active="true" />
+    <frame x="-8" y="0" width="1378" height="728" extended-state="1" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31260794" sideWeight="0.4977169" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3880342" sideWeight="0.46651447" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32136753" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3897436" sideWeight="0.53348553" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32935154" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3989455" sideWeight="0.53348553" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32820514" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32928678" sideWeight="0.6905983" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32928678" sideWeight="0.6905983" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4003044" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24886191" sideWeight="0.6905983" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.30940172" sideWeight="0.49695587" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24885845" sideWeight="0.6924429" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3075571" sideWeight="0.49695587" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32928678" sideWeight="0.61196584" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32928678" sideWeight="0.61196584" order="2" side_tool="false" content_ui="tabs" />
@@ -667,41 +772,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/org/MMPlayer/MMPlayer/activity/ActivityMusicMenu.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/MMPlayer/MMPlayer/activity/ActivityPlaying.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="356" column="48" selection-start="14399" selection-end="14399" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/MMPlayer/MMPlayer/activity/ActivityMusicMenu.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/MMPlayer/MMPlayer/activity/ActivityPlaying.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="356" column="48" selection-start="14399" selection-end="14399" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/MMPlayer/MMPlayer/activity/ActivityMusicMenu.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/org/MMPlayer/MMPlayer/activity/ActivityPlaying.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="356" column="48" selection-start="14399" selection-end="14399" vertical-scroll-proportion="0.0">
@@ -736,23 +806,19 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/res/layout/view_favorite_music.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="31" selection-start="814" selection-end="814" vertical-scroll-proportion="0.3952569">
-          <folding />
-        </state>
-      </provider>
       <provider editor-type-id="android-designer">
         <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="18" column="31" selection-start="814" selection-end="814" vertical-scroll-proportion="0.3952569" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/res/layout/view_local_music.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="53" selection-start="525" selection-end="525" vertical-scroll-proportion="0.15479876">
-          <folding />
-        </state>
-      </provider>
       <provider editor-type-id="android-designer">
         <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="53" selection-start="525" selection-end="525" vertical-scroll-proportion="0.15479876" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/org/MMPlayer/MMPlayer/service/ServicePlaying.java">
@@ -762,16 +828,61 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/MMPlayer/MMPlayer/cut/Frames.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="17" column="57" selection-start="393" selection-end="393" vertical-scroll-proportion="-9.145888">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/MMPlayer/MMPlayer/cut/MP3File.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="42" column="33" selection-start="1105" selection-end="1105" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/layout/activity_playing.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="28" column="44" selection-start="1307" selection-end="1307" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/MMPlayer/MMPlayer/cut/ID3V2.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="31" column="25" selection-start="878" selection-end="878" vertical-scroll-proportion="0.044883303">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/MMPlayer/MMPlayer/utils/FileUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="86" column="31" selection-start="3088" selection-end="3088" vertical-scroll-proportion="0.04595588">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="32" column="29" selection-start="1724" selection-end="1724" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/org/MMPlayer/MMPlayer/activity/ActivityMusicMenu.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="52" column="11" selection-start="1971" selection-end="1971" vertical-scroll-proportion="0.2754821">
+        <state line="29" column="39" selection-start="961" selection-end="995" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/org/MMPlayer/MMPlayer/activity/ActivityPlaying.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="356" column="48" selection-start="14399" selection-end="14399" vertical-scroll-proportion="0.0">
+        <state line="558" column="33" selection-start="24619" selection-end="24619" vertical-scroll-proportion="0.47875354">
           <folding />
         </state>
       </provider>
@@ -852,7 +963,7 @@
       </state>
       <state key="ProjectLibrariesConfigurable.UI">
         <settings>
-          <last-edited>android-async-http-1.4.3</last-edited>
+          <last-edited>umeng_sdk</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>

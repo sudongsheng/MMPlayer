@@ -22,7 +22,7 @@
         <SOURCES />
       </library>
     </orderEntry>
-    <orderEntry type="library" name="android-async-http-1.4.3" level="project" />
+    <orderEntry type="library" name="umeng_sdk" level="project" />
   </component>
 </module>
 

@@ -30,7 +30,7 @@ public class ServicePlaying extends Service {
         mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
             @Override
             public void onCompletion(MediaPlayer arg0) {
-                repeatState=preferences.getInt("repeatState",AppConstant.AllRepeat);
+                repeatState = preferences.getInt("repeatState", AppConstant.AllRepeat);
                 if (repeatState == AppConstant.AllRepeat) {
                     if (position == ActivityPlaying.musicNum - 1) { // 如果已经时第一首则播放最后一首
                         position = 0;
@@ -47,11 +47,11 @@ public class ServicePlaying extends Service {
                     play(mp3Info);
                 }
                 SharedPreferences.Editor editor = preferences.edit();
-                editor.putInt("position",position);
+                editor.putInt("position", position);
                 editor.commit();
                 Intent sendIntent = new Intent(AppConstant.UPDATE_ACTION);
                 sendIntent.putExtra("position", position);
-                sendIntent.putExtra("name",ActivityPlaying.mp3Infos.get(position).getMp3Name());
+                sendIntent.putExtra("name", ActivityPlaying.mp3Infos.get(position).getMp3Name());
                 // 发送广播，将被Activity组件中的BroadcastReceiver接收到
                 sendBroadcast(sendIntent);
             }
@@ -65,9 +65,9 @@ public class ServicePlaying extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        preferences=PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-        position = preferences.getInt("position",0);
-     //   Log.i("TAG","position:"+position);
+        preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        position = preferences.getInt("position", 0);
+        //   Log.i("TAG","position:"+position);
         mp3Info = ActivityPlaying.mp3Infos.get(position);
         if (mp3Info != null) {
             int MSG = intent.getIntExtra("MSG", 0);

@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 public class Mp3Info implements Serializable {
     /**
-     * 
+     *
      */
     private static final long serialVersionUID = 1L;
     private int id = 0;
@@ -12,9 +12,10 @@ public class Mp3Info implements Serializable {
     private String mp3Name = null;
     private String mp3Size = null;
     private String lrcName = null;
-    private String singer=null;
-    private String album=null;
-    private String title=null;
+    private String singer = null;
+    private String album = null;
+    private String title = null;
+
     public String getAlbum() {
         return album;
     }
@@ -32,6 +33,7 @@ public class Mp3Info implements Serializable {
     }
 
     private Long mp3Duration;
+
     public Long getMp3Duration() {
         return mp3Duration;
     }
@@ -89,7 +91,6 @@ public class Mp3Info implements Serializable {
     }
 
 
-
     public Mp3Info(int id, String mp3Path, String mp3Name, String mp3Size,
                    String lrcName, String lrcSize, String singer, String album,
                    String title, Long mp3Duration) {
@@ -113,6 +114,6 @@ public class Mp3Info implements Serializable {
     public String toString() {
         return "Mp3Info [id=" + id + ", mp3Path=" + mp3Path + ",mp3Name="
                 + mp3Name + ", mp3Size=" + mp3Size + ", lrcName=" + lrcName
-                + ", singer=" +singer  +"album"+album +"]";
+                + ", singer=" + singer + "album" + album + "]";
     }
 }
