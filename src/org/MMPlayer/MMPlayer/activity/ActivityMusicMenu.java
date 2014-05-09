@@ -2,6 +2,8 @@ package org.MMPlayer.MMPlayer.activity;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.NotificationManager;
+import android.app.Service;
 import android.content.*;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -9,12 +11,15 @@ import android.preference.PreferenceManager;
 import android.provider.MediaStore;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.telephony.PhoneStateListener;
+import android.telephony.TelephonyManager;
 import android.util.Log;
 import android.view.*;
 import android.widget.*;
 import com.umeng.analytics.MobclickAgent;
 import org.MMPlayer.MMPlayer.R;
 import org.MMPlayer.MMPlayer.model.Mp3Info;
+import org.MMPlayer.MMPlayer.notification.PhoneListener;
 import org.MMPlayer.MMPlayer.notification.SetVoice;
 import org.MMPlayer.MMPlayer.service.ServicePlaying;
 import org.MMPlayer.MMPlayer.utils.AppConstant;
@@ -74,6 +79,10 @@ public class ActivityMusicMenu extends Activity implements RadioGroup.OnCheckedC
                     public void onClick(DialogInterface dialogInterface, int i) {
                         Intent intent = new Intent(ActivityMusicMenu.this, ServicePlaying.class);
                         stopService(intent);
+                        unregisterReceiver(receiver);
+                        //取消
+                        NotificationManager manger = (NotificationManager)ActivityMusicMenu.this.getSystemService(NOTIFICATION_SERVICE);
+                        manger.cancel(100);
                         Intent intent1 = new Intent(Intent.ACTION_MAIN);
                         intent1.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                         intent1.addCategory(Intent.CATEGORY_HOME);
@@ -120,6 +129,11 @@ public class ActivityMusicMenu extends Activity implements RadioGroup.OnCheckedC
         IntentFilter filter = new IntentFilter();
         filter.addAction(AppConstant.UPDATE_ACTION);
         registerReceiver(receiver, filter);
+
+        //获取电话服务管理器
+        TelephonyManager tm = (TelephonyManager) getSystemService(Service.TELEPHONY_SERVICE);
+        //通过TelephonyManager注册我们要监听的电话状态改变事件
+        tm.listen(new PhoneListener(this), PhoneStateListener.LISTEN_CALL_STATE);
     }
 
     private void setFooterView() {
@@ -323,13 +337,7 @@ public class ActivityMusicMenu extends Activity implements RadioGroup.OnCheckedC
                                         }
                                     }
                                 })
-                                .setNegativeButton("取消",
-                                        new DialogInterface.OnClickListener() {
-                                            @Override
-                                            public void onClick(DialogInterface dialog,
-                                                                int which) {
-                                            }
-                                        }).create().show();
+                                .setNegativeButton("取消", null).create().show();
                         break;
                     case 2:
                         new AlertDialog.Builder(ActivityMusicMenu.this)
@@ -340,12 +348,13 @@ public class ActivityMusicMenu extends Activity implements RadioGroup.OnCheckedC
                                                 + mp3Infos.get(position).getSinger()
                                                 + "\n专辑："
                                                 + mp3Infos.get(position).getAlbum()
-                                                + "\n大小:"
+                                                + "\n大小: "
                                                 + mp3Infos.get(position).getMp3Size()
                                                 + "\n时长："
                                                 + new FormatTime().formatTime(mp3Infos.get(
                                                 position).getMp3Duration()) + "\n路径："
-                                                + mp3Infos.get(position).getMp3Path() + "\n")
+                                                + mp3Infos.get(position).getMp3Path() + "\n"
+                                )
                                 .create().show();
                         break;
                     case 3:
@@ -475,10 +484,12 @@ public class ActivityMusicMenu extends Activity implements RadioGroup.OnCheckedC
         }
         return super.onKeyUp(keyCode, event);
     }
+
     public void onResume() {
         super.onResume();
         MobclickAgent.onResume(this);
     }
+
     public void onPause() {
         super.onPause();
         MobclickAgent.onPause(this);

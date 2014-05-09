@@ -27,6 +27,7 @@ public class ID3V2 {
         is.read(header);
         //判断是否是合法的ID3V2头
         if (header[0] != 'I' || header[1] != 'D' || header[2] != '3') {
+            tagSize=0;
             Log.i("TAG", "not invalid mp3 ID3 tag");
         } else {
             //计算ID3V2的帧大小

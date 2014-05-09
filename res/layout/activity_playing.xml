@@ -48,17 +48,16 @@
             android:layout_height="5dp"
             android:layout_width="fill_parent"
             android:background="@drawable/line"/>
-    <ScrollView
+    <org.MMPlayer.MMPlayer.lyric.LrcView
             android:id="@+id/lrcScrollView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1.4"
-            android:layout_marginRight="20dp"
-            android:layout_marginLeft="20dp"
             android:layout_marginTop="15dp"
             android:layout_marginBottom="15dp"
-            android:background="@drawable/song_bg_prepared">
-    </ScrollView>
+            android:layout_above="@+id/footer_layout"
+            android:layout_below="@+id/header_layout"
+            android:layout_centerHorizontal="true" />
     <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"

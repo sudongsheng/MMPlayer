@@ -20,6 +20,7 @@ public class FileUtils {
 
     public File createFileInSDCard(String fileName, String dir) throws IOException {
         File file = new File(SDCardRoot + dir + File.separator + fileName);
+        Log.i("TAG",file.toString());
         file.createNewFile();
         return file;
     }
@@ -35,13 +36,14 @@ public class FileUtils {
         return file.exists();
     }
 
-    public File write2SDFromInput(String path, String fileName,
-                                  InputStream input) {
+    public File write2SDFromInput(String path, String fileName,InputStream input) {
         File file = null;
         OutputStream output = null;
         try {
-            createSDDir(path);
-            file = createFileInSDCard(fileName, path);
+//            createSDDir(path);
+            file = new File(path + File.separator+fileName);
+            Log.i("TAG",file.toString());
+            file.createNewFile();
             output = new FileOutputStream(file);
             byte buffer[] = new byte[4 * 1024];
             int temp;
@@ -83,7 +85,9 @@ public class FileUtils {
                         Mp3Info cutMp3Info = new Mp3Info();
                         cutMp3Info.setId(Integer.parseInt(fileArray[i].toString().substring(fileArray[i].toString().lastIndexOf("- 剪切 - ") + 7, fileArray[i].toString().lastIndexOf(".mp3"))));
                         cutMp3Info.setMp3Name(fileArray[i].toString().substring(fileArray[i].toString().indexOf("音乐剪切/") + 5, fileArray[i].toString().indexOf(".mp3")));
+                        cutMp3Info.setTitle(fileArray[i].toString().substring(fileArray[i].toString().indexOf("音乐剪切/") + 5, fileArray[i].toString().indexOf(".mp3")));
                         cutMp3Info.setMp3Path(fileArray[i].toString());
+                        cutMp3Info.setSinger("<unknown>");
                         try {
                             cutMp3Info.setMp3Duration(Long.parseLong(fileArray[i].toString().substring(fileArray[i].toString().lastIndexOf("- 剪切 - ") + 7, fileArray[i].toString().lastIndexOf(".mp3"))));
                         } catch (Exception e) {

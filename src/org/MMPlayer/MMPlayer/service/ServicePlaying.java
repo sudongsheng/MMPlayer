@@ -1,15 +1,21 @@
 package org.MMPlayer.MMPlayer.service;
 
 import android.app.Service;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.media.MediaPlayer.OnPreparedListener;
 import android.os.IBinder;
 import android.preference.PreferenceManager;
+import android.telephony.PhoneStateListener;
+import android.telephony.TelephonyManager;
 import android.util.Log;
 import org.MMPlayer.MMPlayer.activity.ActivityMusicMenu;
 import org.MMPlayer.MMPlayer.activity.ActivityPlaying;
+import org.MMPlayer.MMPlayer.lyric.LrcContent;
+import org.MMPlayer.MMPlayer.lyric.LrcProcess;
 import org.MMPlayer.MMPlayer.model.Mp3Info;
 import org.MMPlayer.MMPlayer.utils.AppConstant;
 
@@ -123,4 +129,5 @@ public class ServicePlaying extends Service {
             mediaPlayer.start(); // 开始播放
         }
     }
+
 }

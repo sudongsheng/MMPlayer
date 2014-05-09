@@ -2,12 +2,12 @@ package org.MMPlayer.MMPlayer.activity;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.Service;
 import android.content.*;
-import android.os.Bundle;
-import android.os.Environment;
-import android.os.Handler;
-import android.os.StatFs;
+import android.os.*;
 import android.preference.PreferenceManager;
+import android.telephony.PhoneStateListener;
+import android.telephony.TelephonyManager;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
@@ -16,23 +16,37 @@ import android.widget.ImageButton;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
+import com.loopj.android.http.AsyncHttpClient;
+import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.umeng.analytics.MobclickAgent;
 import org.MMPlayer.MMPlayer.R;
 import org.MMPlayer.MMPlayer.cut.ID3V1;
 import org.MMPlayer.MMPlayer.cut.ID3V2;
 import org.MMPlayer.MMPlayer.cut.MP3File;
+import org.MMPlayer.MMPlayer.lyric.LrcContent;
+import org.MMPlayer.MMPlayer.lyric.LrcProcess;
+import org.MMPlayer.MMPlayer.lyric.LrcView;
 import org.MMPlayer.MMPlayer.model.Mp3Info;
+import org.MMPlayer.MMPlayer.notification.MusicNotify;
+import org.MMPlayer.MMPlayer.notification.PhoneListener;
 import org.MMPlayer.MMPlayer.service.ServicePlaying;
 import org.MMPlayer.MMPlayer.utils.AppConstant;
+import org.MMPlayer.MMPlayer.utils.FileUtils;
 import org.MMPlayer.MMPlayer.utils.FormatTime;
+import org.json.JSONObject;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
- * User: helloworld
+ * User: sudongsheng
  * Date: 13-9-18
  * Time: 上午1:10
  * To change this template use File | Settings | File Templates.
@@ -50,6 +64,7 @@ public class ActivityPlaying extends Activity {
     private TextView currentTime;
     private TextView finalTime;
     private TextView musicName;
+    private LrcView lrcView;
 
     private int position;
     private int repeatState;
@@ -64,8 +79,6 @@ public class ActivityPlaying extends Activity {
     private UpdateTimeCallback updateTimeCallback = null;
     private long offset = 0;
     private long begin = 0;
-    private long nextTimeMill = 0;
-    private long currentTimeMill = 0;
     private long pauseTimeMills = 0;
 
     private boolean cutFlag = false;
@@ -75,6 +88,9 @@ public class ActivityPlaying extends Activity {
 
     private final static int BEFORE = 1;
     private final static int NEXT = 2;
+
+    private LrcProcess mLrcProcess; //歌词处理
+    private ArrayList<LrcContent> lrcList = new ArrayList<LrcContent>(); //存放歌词列表对象
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -99,14 +115,18 @@ public class ActivityPlaying extends Activity {
         setListener();
         setView();
         setDynamicView();
-        prepareLrc();
-        begin = System.currentTimeMillis();
-        handler.post(updateTimeCallback);
         playService(AppConstant.MEDIA_PLAY);
+
         PlayerReceiver playerReceiver = new PlayerReceiver();
         IntentFilter filter = new IntentFilter();
         filter.addAction(AppConstant.UPDATE_ACTION);
         registerReceiver(playerReceiver, filter);
+
+        //获取电话服务管理器
+        TelephonyManager tm = (TelephonyManager) getSystemService(Service.TELEPHONY_SERVICE);
+        //通过TelephonyManager注册我们要监听的电话状态改变事件
+        tm.listen(new PhoneListener(this), PhoneStateListener.LISTEN_CALL_STATE);
+        //设置一个监听器
     }
 
     private void findViewID() {
@@ -122,6 +142,7 @@ public class ActivityPlaying extends Activity {
         finalTime = (TextView) findViewById(R.id.final_time);
         currentTime = (TextView) findViewById(R.id.current_time);
         musicName = (TextView) findViewById(R.id.musicName);
+        lrcView = (LrcView) findViewById(R.id.lrcScrollView);
     }
 
     private void setView() {
@@ -137,9 +158,147 @@ public class ActivityPlaying extends Activity {
                 circle.setBackgroundResource(R.drawable.circle_random);
                 break;
         }
+
     }
 
+    private void prepareLrc() {
+        mLrcProcess = new LrcProcess();
+        lrcList = mLrcProcess.readLRC(mp3Infos.get(position).getMp3Path()
+                .substring(0, mp3Infos.get(position).getMp3Path().lastIndexOf("."))
+                + ".lrc");
+        Collections.sort(lrcList);
+//        Iterator iter = lrcList.iterator();
+//        while (iter.hasNext()) {
+//            LrcContent lrcContent=(LrcContent)iter.next();
+//            Log.i("TAG","time:"+lrcContent.getLrcTime()+"content:"+lrcContent.getLrcStr());
+//        }
+        if (lrcList.size() == 1) {
+            String url;
+            String name = mp3Infos.get(position).getTitle().replace(" ", "");
+            String singer = mp3Infos.get(position).getSinger().replace(" ", "");
+            if (singer.equals("<unknown>")) {
+                if (name.contains("("))
+                    singer = name.substring(name.indexOf("-") + 1, name.indexOf("("));
+                else if (name.contains("["))
+                    singer = name.substring(name.indexOf("-") + 1, name.indexOf("["));
+                else
+                    singer = name.substring(name.indexOf("-") + 1);
+                name = name.substring(0, name.indexOf("-"));
+            } else {
+                if (singer.contains("-"))
+                    singer = singer.substring(0, singer.indexOf("-"));
+                if (singer.contains("("))
+                    singer = singer.substring(0, singer.indexOf("("));
+                if (name.contains("("))
+                    name = name.substring(0, name.indexOf("("));
+                if (singer.contains("["))
+                    singer = singer.substring(0, singer.indexOf("["));
+                if (name.contains("["))
+                    name = name.substring(0, name.indexOf("["));
+            }
+            url = "http://geci.me/api/lyric/" + name + "/" + singer;
+            Log.i("TAG", url);
+            try {
+                new AsyncHttpClient().post(url, null,
+                        new AsyncHttpResponseHandler() {
+                            @Override
+                            public void onSuccess(String response) {
+                                Log.i("TAG", response);
+                                try {
+                                    JSONObject jsonObject = new JSONObject(response);
+                                    if (jsonObject.getInt("count") == 0) {
+                                        LrcContent lrcContent = new LrcContent();
+                                        lrcContent.setLrcTime(0);
+                                        lrcContent.setLrcStr("找不到匹配的歌词资源文件");
+                                        lrcList.remove(0);
+                                        lrcList.add(lrcContent);
+                                    } else {
+                                        JSONObject object = (JSONObject) jsonObject.getJSONArray("result").get(0);
+                                        Log.i("TAG", object.getString("lrc"));
+                                        LrcDownload lrcDownload = new LrcDownload(object.getString("lrc"), mp3Infos.get(position).getMp3Path().substring(0, mp3Infos.get(position).getMp3Path().lastIndexOf("/")), mp3Infos.get(position).getLrcName());
+                                        new Thread(lrcDownload).start();
+
+                                    }
+                                } catch (Exception e) {
+                                }
+                            }
+
+                            @Override
+                            public void onFailure(Throwable throwable, String s) {
+                                Log.i("TAG", s);
+                                LrcContent lrcContent = new LrcContent();
+                                lrcContent.setLrcTime(0);
+                                lrcContent.setLrcStr("找不到资源文件");
+                                lrcList.remove(0);
+                                lrcList.add(lrcContent);
+                            }
+                        }
+                );
+            } catch (Exception e) {
+            }
+        }
+        lrcView.setmLrcList(lrcList);
+        begin = System.currentTimeMillis();
+        updateTimeCallback = new UpdateTimeCallback(0);
+        handler.post(updateTimeCallback);
+    }
+
+    class LrcDownload implements Runnable {
+        String url;
+        String path;
+        String name;
+
+        public LrcDownload(String url, String path, String name) {
+            this.url = url;
+            this.path = path;
+            this.name = name;
+        }
+
+        @Override
+        public void run() {
+            StringBuffer sb = new StringBuffer();
+            BufferedReader buffer = null;
+            String line = null;
+            try {
+                URL mUrl = new URL(url);
+                HttpURLConnection connection = (HttpURLConnection) mUrl.openConnection();
+//            buffer=new BufferedReader(new InputStreamReader(connection.getInputStream()));
+//            while ((line=buffer.readLine())!=null){
+//                sb.append(line);
+//            }
+//            Log.i("TAG", sb.toString());
+                if (new FileUtils().write2SDFromInput(path, name, connection.getInputStream()) != null) {
+                    mHandler.sendEmptyMessage(AppConstant.SUCCESS);
+                }
+            } catch (Exception e) {
+                Log.i("TAG", e.toString());
+                mHandler.sendEmptyMessage(AppConstant.FAILURE);
+            }
+        }
+    }
+
+    Handler mHandler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            if (msg.what == AppConstant.SUCCESS) {
+                lrcList = mLrcProcess.readLRC(mp3Infos.get(position).getMp3Path()
+                        .substring(0, mp3Infos.get(position).getMp3Path().lastIndexOf("."))
+                        + ".lrc");
+                Collections.sort(lrcList);
+                lrcView.setmLrcList(lrcList);
+            } else {
+                lrcList.remove(0);
+                LrcContent lrcContent = new LrcContent();
+                lrcContent.setLrcTime(0);
+                lrcContent.setLrcStr("抱歉，找不到资源");
+                lrcList.add(lrcContent);
+                lrcView.setmLrcList(lrcList);
+            }
+        }
+    };
+
     private void setDynamicView() {
+        prepareLrc();
         finalTime.setText(new FormatTime().formatTime(mp3Infos.get(position).getMp3Duration()));
         musicName.setText(mp3Infos.get(position).getMp3Name());
         isFavorite = preferences.getBoolean("favorite_" + mp3Infos.get(position).getId(), false);
@@ -147,6 +306,9 @@ public class ActivityPlaying extends Activity {
             favorite.setBackgroundResource(R.drawable.favorite_white);
         else
             favorite.setBackgroundResource(R.drawable.unfavorite_white);
+
+        MusicNotify musicNotify=new MusicNotify(this,mp3Infos.get(position).getTitle(),mp3Infos.get(position).getSinger());
+        musicNotify.sendNotification();
     }
 
     private void setListener() {
@@ -314,24 +476,6 @@ public class ActivityPlaying extends Activity {
         cut.setOnClickListener(new CutButtonListener());
     }
 
-    private void prepareLrc() {
-        /*try {
-            InputStream inputStream = new FileInputStream(mp3Info.getMp3Path()
-                    .substring(0, mp3Info.getMp3Path().lastIndexOf("."))
-                    + ".lrc");
-            LrcProcessor lrcProcessor = new LrcProcessor();
-            queues = lrcProcessor.process(inputStream);
-
-            begin = 0;
-            currentTimeMill = 0;
-            nextTimeMill = 0;
-        } catch (FileNotFoundException e) {
-            // e.printStackTrace();
-            updateTimeCallback = new UpdateTimeCallback();
-        }*/
-        updateTimeCallback = new UpdateTimeCallback();
-    }
-
     private void getMusicPosition(int flag) {
         if (repeatState == AppConstant.RandomRepeat) {
             position = (int) ((musicNum - 1) * Math.random());
@@ -402,7 +546,7 @@ public class ActivityPlaying extends Activity {
                                                     isPlaying = true;
                                                     cutFlag = false;
                                                     setViewVisible();
-                                                    Log.i("TAG", start_cutTime + "##$$%" + end_cutTime + "");
+                                                    Log.i("TAG", start_cutTime + "##$$%%" + end_cutTime);
                                                     File f = new File(mp3Infos.get(position).getMp3Path());
                                                     ID3V1 id3v1 = new ID3V1(f);
                                                     try {
@@ -432,11 +576,13 @@ public class ActivityPlaying extends Activity {
                                                             } else
                                                                 Toast.makeText(ActivityPlaying.this, "内存空间不足", Toast.LENGTH_SHORT).show();
                                                         } catch (Exception e) {
+                                                            Log.i("TAG","Exception:"+e.toString());
                                                             Toast.makeText(ActivityPlaying.this, "暂不支持此歌曲的裁剪", Toast.LENGTH_SHORT).show();
                                                         }
                                                     }
                                                 }
-                                            })
+                                            }
+                                    )
                                     .setNegativeButton("取消", new DialogInterface.OnClickListener() {
                                         public void onClick(DialogInterface dialog, int which) {
                                             playService(AppConstant.MEDIA_PAUSE);
@@ -483,51 +629,36 @@ public class ActivityPlaying extends Activity {
     }
 
     class UpdateTimeCallback implements Runnable {
-        ArrayList times = null;
-        ArrayList messages = null;
+
         int seekTo = 0;
         int ss;
 
-        public UpdateTimeCallback() {
-        }
-
         public UpdateTimeCallback(int seekTo) {
             this.seekTo = seekTo;
-        }
-
-        public UpdateTimeCallback(ArrayList<ArrayList> queues) {
-            // 从ArrayList当中取出相应的对象对象
-            times = queues.get(0);
-            messages = queues.get(1);
-            ss = times.size();
         }
 
         @Override
         public void run() {
             // 计算偏移量，也就是说从开始播放Mp3到现在为止，共消耗了多少时间
             offset = System.currentTimeMillis() - begin + seekTo;
-            if (offset <= mp3Infos.get(position).getMp3Duration()) {
-                // 更新进度条
-                int bar = (int) Math.floor(offset * 100 / mp3Infos.get(position).getMp3Duration());
-                seekBar.setProgress(bar);
-                currentTime.setText(new FormatTime().formatTime(offset));
-                currentTimeMill = currentTimeMill + 10;
-            }
-            /*if (currentTimeMill == 0) {
-                nextTimeMill = (Long) times.get(i);
-                message = (String) messages.get(i);
-                i++;
-                lrcTextView.setText(message);
-            }
-
-            if (offset >= nextTimeMill) {
-                lrcTextView.setText(message);
-                if (i < ss) {
-                    message = (String) messages.get(i);
-                    nextTimeMill = (Long) times.get(i);
-                    i++;
+            try {
+                if (offset <= mp3Infos.get(position).getMp3Duration()) {
+                    // 更新进度条
+                    int bar = (int) Math.floor(offset * 100 / mp3Infos.get(position).getMp3Duration());
+                    seekBar.setProgress(bar);
+                    currentTime.setText(new FormatTime().formatTime(offset));
+                    for (int i = 0; i < lrcList.size() - 1; i++) {
+                        if (lrcList.get(i).getLrcTime() <= offset && lrcList.get(i + 1).getLrcTime() > offset) {
+                            lrcView.setIndex(i);
+                        }
+                    }
+                    if (offset >= lrcList.get(lrcList.size() - 1).getLrcTime()) {
+                        lrcView.setIndex(lrcList.size() - 1);
+                    }
                 }
-            }*/
+            } catch (Exception e) {
+                Log.i("TAG", "Exception:" + e.toString());
+            }
             handler.postDelayed(updateTimeCallback, 10);
         }
     }
@@ -539,11 +670,8 @@ public class ActivityPlaying extends Activity {
             if (action.equals(AppConstant.UPDATE_ACTION)) {
                 // 获取Intent中的current消息，current代表当前正在播放的歌曲
                 position = intent.getIntExtra("position", 0);
-                setDynamicView();
                 handler.removeCallbacks(updateTimeCallback);
-                updateTimeCallback = new UpdateTimeCallback(0);
-                begin = System.currentTimeMillis();
-                handler.post(updateTimeCallback);
+                setDynamicView();
             }
         }
     }
@@ -557,10 +685,12 @@ public class ActivityPlaying extends Activity {
         }
         return false;
     }
+
     public void onResume() {
         super.onResume();
         MobclickAgent.onResume(this);
     }
+
     public void onPause() {
         super.onPause();
         MobclickAgent.onPause(this);

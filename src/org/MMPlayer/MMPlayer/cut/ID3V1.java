@@ -2,10 +2,7 @@ package org.MMPlayer.MMPlayer.cut;
 
 import android.util.Log;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.RandomAccessFile;
+import java.io.*;
 
 public class ID3V1 {
 
@@ -36,17 +33,17 @@ public class ID3V1 {
             //逐一读取ID3V1中的各个字段
             readTag(tags);
         } catch (FileNotFoundException e) {
-            e.printStackTrace();
+            Log.i("TAG", "ID3V1-Exception:" + e.toString());
         } catch (IOException e) {
-            e.printStackTrace();
+            Log.i("TAG", "ID3V1-Exception:" + e.toString());
         }
     }
 
-    private void readTag(byte[] array) {
+    private void readTag(byte[] array){
         title = new String(array, 0, 30).trim();
         artist = new String(array, 30, 30).trim();
         album = new String(array, 60, 30).trim();
-        year = new String(array, 90, 4);
+        year = new String(array, 90, 4).trim();
         if (artist == null) {
             artist = "<UnKnown>";
         }
